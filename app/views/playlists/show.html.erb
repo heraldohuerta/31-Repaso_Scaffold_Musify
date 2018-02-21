@@ -1,14 +1,52 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @playlist.name %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @playlist.user.name %>
-</p>
+<h1>Nombre de la Lista:  <%= @playlist.name %> </h1>
+<h3>Nombre del usuario: <%= @playlist.user.name %></h3>
 
 <%= link_to 'Edit', edit_playlist_path(@playlist) %> |
 <%= link_to 'Back', playlists_path %>
+
+
+
+
+<hr>
+<hr>
+<hr>
+<hr>
+
+<h1> Ingreso de una Cancion  a la Lista </h1>
+
+<%= form_with(model: [@playlist,@song], local: true) do |form| %>
+<div class="field">
+  <%= form.label :artist %>
+  <%= form.text_field :artis, id: :song_artist %>
+</div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :song_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<hr>
+<hr>
+<hr>
+<hr>
+<h1> Lista de Canciones Ingresadas </h1>
+
+<ul>
+<% @playlist.songs.each do |songs| %>
+  <li>Nombre Canción<%= songs.name %> Arista<%= songs.artis %>
+
+    <!-- <%= link_to 'Show', playlist_song_path(@playlist,songs) %></td> -->
+    <%= link_to 'Edit', edit_playlist_song_path(@playlist,songs) %></td>
+    <%= link_to 'Destroy', playlist_song_path(@playlist,songs), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
+  </li>
+<% end %>
+</ul>
