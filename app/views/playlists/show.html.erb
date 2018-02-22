@@ -3,8 +3,8 @@
 <h1>Nombre de la Lista:  <%= @playlist.name %> </h1>
 <h3>Nombre del usuario: <%= @playlist.user.name %></h3>
 
-<%= link_to 'Edit', edit_playlist_path(@playlist) %> |
-<%= link_to 'Back', playlists_path %>
+<%= link_to 'Edit', edit_playlist_path(@playlist) ,class:"btn btn-primary" %> |
+<%= link_to 'Back', playlists_path ,class:"btn btn-primary" %>
 
 
 
@@ -25,10 +25,8 @@
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name, id: :song_name %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Accion",class:"btn btn-primary" %>
   </div>
 <% end %>
 
@@ -38,15 +36,24 @@
 <hr>
 <h1> Lista de Canciones Ingresadas </h1>
 
-<ul>
+<table>
+  <thead>
+    <tr>
+      <td><strong>Nombre Canción</strong></td>
+      <td><strong>Arista</strong></td>
+      <td><strong>Opciones</strong></td>
+  </tr>
+  </thead>
+  <tbody>
 <% @playlist.songs.each do |songs| %>
-  <li>Nombre Canción<%= songs.name %> Arista<%= songs.artis %>
-
-    <!-- <%= link_to 'Show', playlist_song_path(@playlist,songs) %></td> -->
-    <%= link_to 'Edit', edit_playlist_song_path(@playlist,songs) %></td>
-    <%= link_to 'Destroy', playlist_song_path(@playlist,songs), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-
-  </li>
+      <tr>
+      <td><%= songs.name %></td>
+      <td><%= songs.artis %></td>
+      <td>
+        <!-- <%= link_to 'Show', playlist_song_path(@playlist,songs) %></td> -->
+        <%= link_to 'Edit', edit_playlist_song_path(@playlist,songs),class:"btn btn-primary" %>
+        <%= link_to 'Destroy', playlist_song_path(@playlist,songs), method: :delete, data: { confirm: 'Are you sure?' } ,class:"btn btn-primary"%>
+      </td>
+    </tr>
 <% end %>
 </ul>

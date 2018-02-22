@@ -2,13 +2,42 @@
 <html>
   <head>
     <title>Musify</title>
-    <%= csrf_meta_tags %>
 
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="mb-5">
+      <nav class="navbar fixed-top  navbar-expand-lg navbar-dark bg-dark color_bar "  style="border-bottom: 5px solid  #F0AB00;">
+      <div>
+        <a href="<%= users_path %>" class="navbar-brand">
+        <%= image_tag "logo.png", class:'img-fluid', alt:'Logo' %>
+        </a>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <h1>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mr-3"><a href="<%= users_path  %>"     class="nav-link text-white">User</a></li>
+          <li class="nav-item mr-3"><a href="<%= playlist_songs_path("1") %>"     class="nav-link text-white">Song</a></li>
+          <li class="nav-item mr-3"><a href="<%= playlists_path %>"     class="nav-link text-white">PlayList</a></li>
+        </ul>
+        </h1>
+      </div>
+    </nav>
+    <div class="sticky m-5"><br><br><<br><br></div>
+    <div class="ml-5">
+      <%= yield %>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
   </body>
 </html>

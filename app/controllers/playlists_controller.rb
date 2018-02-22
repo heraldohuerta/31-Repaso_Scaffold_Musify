@@ -1,11 +1,24 @@
 class PlaylistsController < ApplicationController
   before_action :set_playlist, only: [:show, :edit, :update, :destroy]
+  @@user_id = nil
 
   # GET /playlists
   # GET /playlists.json
   def index
-    @playlists = Playlist.all
+    if  @@user_id.nil?
+        @playlists = Playlist.all
+     else
+         @playlists = Playlist.where(user_id: @@user_id)
+         @@user_id = nil
+    end
   end
+
+
+  def find
+    @@user_id = params[:user_id]
+    redirect_to playlists_path
+  end
+
 
   # GET /playlists/1
   # GET /playlists/1.json

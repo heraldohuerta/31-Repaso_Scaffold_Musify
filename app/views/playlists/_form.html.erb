@@ -21,9 +21,7 @@
   <div class="field  input-group-prepend">
     <%= form.label :user_id, class:"input-group-text"  %>
     <%= form.select  :user_id,User.pluck(:name,:id), id: :playlist_user_id %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Accion",class:"btn btn-primary" %>
   </div>
 <% end %>

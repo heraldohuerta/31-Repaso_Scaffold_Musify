@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1> Lista de Canciones Ingresadas </h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <td><strong>Nombre Canción</strong></td>
+      <td><strong>Arista</strong></td>
+  </tr>
+  </thead>
+  <tbody>
+<% @song.each  do |songs| %>
+      <tr>
+      <td><%= songs.name %></td>
+      <td><%= songs.artis %></td>
+    </tr>
+<% end %>
+</tbody>
+</table>
